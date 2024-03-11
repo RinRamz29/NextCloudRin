@@ -1,0 +1,4 @@
+FROM postgres:16.2
+ENV POSTGRES_DB nextclouddb
+ENV POSTGRES_USER nextcloud
+ENV POSTGRES_PASSWORD nextcloud

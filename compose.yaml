@@ -1,0 +1,32 @@
+version: '2.2'
+services:
+  nextcloud:
+    depends_on:
+      - postgresrin
+    build: Next
+    ports:
+      - 3000:80 # NextCloud Webinterface
+    networks:
+      rinNetwork:
+        ipv4_address: "192.168.0.5"
+    environment:
+      NEXTCLOUD_ADMIN_USER: rin 
+      NEXTCLOUD_ADMIN_PASSWORD: mementore29
+  postgresrin:
+    build: Post
+    ports:
+      - 3001:5432 # PostgreSQL Database
+    networks:
+      rinNetwork:
+        ipv4_address: "192.168.0.6"
+networks:
+  rinNetwork:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 192.168.0.0/24
+         gateway: 192.168.0.1
+
+
+   
+  
